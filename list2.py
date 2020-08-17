@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Jalal Belsifar help from Rachida and, Kevin"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -28,8 +28,11 @@ __author__ = "???"
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    list_of_numbers = []
+    for value in nums:
+        if len(list_of_numbers) == 0 or value != list_of_numbers[-1]:
+            list_of_numbers.append(value)
+    return list_of_numbers
 
 
 # E. zip_merge
@@ -43,9 +46,11 @@ def remove_adjacent(nums):
 
 
 def zip_merge(list1, list2):
-    # your code here
-    return
-
+    results = []
+    zipped_files = zip(list1, list2)
+    for _ in zipped_files:
+        results.append(''.join(_))
+    return(results)
 
 # F. empty_filter
 # Given a single list containing strings, empty strings, and
@@ -57,9 +62,17 @@ def zip_merge(list1, list2):
 
 
 def empty_filter(list1):
-    # your code here
-    return
+    result = []
 
+    def sorting(item):
+        if (item == "" or item is None):
+            return False
+        else:
+            return True
+    filtered_list = (filter(sorting, list1))
+    for index in filtered_list:
+        result.append(index)
+    return result
 
 # G. linear_merge
 # Given two lists sorted in increasing order, create and
@@ -73,8 +86,15 @@ def empty_filter(list1):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    result_list = []
+    while len(list1) > 0 and len(list2) > 0:
+        if list1[0] < list2[0]:
+            result_list.append(list1.pop(0))
+        else:
+            result_list.append(list2.pop(0))
+    result_list.extend(list1)
+    result_list.extend(list2)
+    return result_list
 
 
 # Provided simple test() function used in main() to print
